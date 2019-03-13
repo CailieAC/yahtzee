@@ -24,12 +24,11 @@ namespace yahtzee
 
             userRoll = KeepDice(userRoll);
 
-            //Third/Last User Roll
+            //Third & Final User Roll
             userRoll = DiceRoll(userRoll);
             DisplayResults(userRoll, "third");
 
             int userScore = CalculateScore(userRoll);
-
             Console.WriteLine("Your score is {0}\n", userScore);
 
             int[] computerRollOne = { 0, 0, 0, 0, 0 };
@@ -37,19 +36,16 @@ namespace yahtzee
             int[] computerRollThree = { 0, 0, 0, 0, 0 };
 
             computerRollOne = DiceRoll(computerRollOne);
-
             DisplayComputerResults(computerRollOne, "first");
             int computerScore = CalculateScore(computerRollOne);
 
             computerRollTwo = DiceRoll(computerRollTwo);
             DisplayComputerResults(computerRollTwo, "second");
-
             if (CalculateScore(computerRollTwo) > computerScore)
                 computerScore = CalculateScore(computerRollTwo);
 
             computerRollThree = DiceRoll(computerRollThree);
             DisplayComputerResults(computerRollThree, "third");
-
             if (CalculateScore(computerRollThree) > computerScore)
                 computerScore = CalculateScore(computerRollThree);
 
@@ -64,7 +60,6 @@ namespace yahtzee
             {
                 Console.WriteLine("You lost!");
             }
-
 
             Console.ReadLine();
         }
