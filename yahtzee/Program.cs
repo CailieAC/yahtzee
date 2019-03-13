@@ -167,10 +167,10 @@ namespace yahtzee
                 }
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                if (score[i] < score[i + 1])
-                    total = score[i + 1];
+                if (score[i] > total)
+                    total = score[i];
             }
             return total;
         }
