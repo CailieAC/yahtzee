@@ -89,21 +89,21 @@ namespace yahtzee
         /// <returns>Returns the user's roll values with zeros used for discarded dice</returns>
         public static int[] KeepDice(int[] diceResults)
         {
-            int intToLet = 65;
+            int intToChar = 65;
             for (int i = 0; i < 5; i++)
             {
                 string answer = "";
                 while (answer.ToLower() != "no" && answer.ToLower() != "n"
                     && answer.ToLower() != "yes" && answer.ToLower() != "y")
                 {
-                    Console.Write("Would you like to keep result ({0}), yes (y) or no (n)? ", ((char)intToLet).ToString());
+                    Console.Write("Would you like to keep result ({0}), yes (y) or no (n)? ", ((char)intToChar).ToString());
                     answer = Console.ReadLine();
                 }
                 if (answer.ToLower() == "no" || answer.ToLower() == "n")
                 {
                     diceResults[i] = 0;
                 }
-                intToLet++;
+                intToChar++;
             }
             Console.WriteLine();
             return diceResults;
@@ -117,12 +117,12 @@ namespace yahtzee
         public static void DisplayResults(int[] diceResults, string rollNumber)
         {
             Console.WriteLine("The results of your {0} roll are: ", rollNumber);
-            int intToLet = 65;
+            int intToChar = 65;
             foreach (int roll in diceResults)
             {
-                Console.Write("(" + ((char)intToLet).ToString() + ") ");
+                Console.Write("(" + ((char)intToChar).ToString() + ") ");
                 Console.WriteLine(roll);
-                intToLet++;
+                intToChar++;
             }
             Console.WriteLine();
         }
@@ -151,10 +151,13 @@ namespace yahtzee
         /// <returns>An int of the user's final score</returns>
         public static int CalculateScore(int[] diceResults)
         {
+            //Calculate the score (total) for each possible dice value
             int[] score = { 0, 0, 0, 0, 0, 0 };
             int total = 0;
+            //Iterate through final die results
             for (int dice = 0; dice < 5; dice++)
             {
+                //Determines how many of each die face there were in final roll
                 for (int diceValue = 0; diceValue < 6; diceValue++)
                 {
                     if (diceResults[dice] == diceValue + 1)
